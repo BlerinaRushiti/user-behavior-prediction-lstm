@@ -96,7 +96,7 @@ The main workflow of the project is:
 8. Sort the generated sequences chronologically.
 9. Split the data into training and testing sets using an 80/20 chronological split.
 10. Train Logistic Regression, Decision Tree, and LSTM models.
-11. Evaluate the models using accuracy, precision, recall, F1-score, and confusion matrices.
+11. Evaluate the models using accuracy, precision, recall, F1-score, Macro F1-score, and confusion matrices.
 12. Apply Random UnderSampling to balance the training data.
 13. Retrain the models using the balanced training data.
 14. Compare model performance before and after class balancing.
@@ -115,9 +115,12 @@ After applying Random UnderSampling to the training data, overall accuracy decre
 |---|---:|---:|---:|---:|
 | Logistic Regression | 0.9541 | 0.9043 | 0.3614 | 0.5122 |
 | Decision Tree | 0.9590 | 0.9176 | 0.4728 | 0.5540 |
-| LSTM | 0.9591 | 0.9158 | 0.4571 | 0.5518 |
+| LSTM | 0.9591 | 0.9102 | 0.4767 | 0.5399 |
 
-The results show that class balancing reduces overall accuracy but improves the model's ability to recognize minority user behaviors.
+The results show that class balancing reduces overall accuracy, but improves
+the models' ability to recognize the less frequent `cart` and `purchase`
+interactions. Based on Macro F1, the Decision Tree achieves the highest
+performance after balancing, followed by LSTM and Logistic Regression.
 
 ### Minority Class Recall
 
@@ -125,10 +128,12 @@ For the LSTM model, minority-class recall improves after balancing:
 
 | Event | Before Balancing | After Balancing |
 |---|---:|---:|
-| `cart` | 0.08 | 0.52 |
-| `purchase` | 0.15 | 0.55 |
+| `cart` | 0.12 | 0.52 |
+| `purchase` | 0.16 | 0.52 |
 
-This demonstrates the effect of class balancing on the prediction of less frequent user interactions.
+These results show that Random UnderSampling improves the recognition of
+the less frequent `cart` and `purchase` interactions, although this
+improvement is accompanied by a decrease in overall accuracy.
 
 ### Visual Results
 
