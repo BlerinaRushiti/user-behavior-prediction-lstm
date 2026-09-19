@@ -139,17 +139,17 @@ improvement is accompanied by a decrease in overall accuracy.
 
 The repository can also include selected figures generated during the experiments.
 
-#### Event Distribution
+### Shpërndarja e klasave para dhe pas balancimit
 
-![Event Distribution](figures/Event_Distribution_After_Cleaning.png)
+![Shpërndarja e klasave para dhe pas balancimit](figures/Figure_5_Class_Distribution_Before_After_Balancing.png)
 
-#### Model Comparison
+### Krahasimi i modeleve para dhe pas balancimit
 
-![Model Comparison](figures/Final_Model_Comparison_Before_After_Cleaning.png)
+![Krahasimi i modeleve para dhe pas balancimit](figures/Figure_6_Final_Model_Comparison_Before_After_Balancing.png)
 
-#### Minority Class Recall
+### Recall i klasave më pak të përfaqësuara
 
-![Minority Class Recall](figures/Minority_Class__Recall_Before_After_Balancing.png)
+![Recall i klasave cart dhe purchase para dhe pas balancimit](figures/Figure_7_Minority_Class_Recall_Before_After_Balancing.png)
 
 ## How to Run
 The complete implementation is available in the Jupyter Notebook:
