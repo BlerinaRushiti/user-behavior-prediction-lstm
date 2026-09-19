@@ -1,55 +1,55 @@
 
-# User Behavior Prediction Using LSTM
+# Parashikimi i sjelljes së përdoruesve me LSTM
 
-## Project Overview
+## Përmbledhje e projektit
 
-This project focuses on predicting the next user interaction in an e-commerce environment using sequential user behavior data.
+Ky projekt fokusohet në parashikimin e ndërveprimit të ardhshëm të përdoruesit në një mjedis të tregtisë elektronike, duke përdorur të dhëna sekuenciale mbi sjelljen e përdoruesve.
 
-The main model used in the project is a Long Short-Term Memory (LSTM) neural network, which is designed to learn patterns from sequences of user interactions. Two traditional machine learning models, Logistic Regression and Decision Tree, are also implemented as baseline models for comparison.
+Modeli kryesor i përdorur në projekt është rrjeti nervor Long Short-Term Memory (LSTM), i cili është projektuar për të mësuar modele nga sekuencat e ndërveprimeve të përdoruesve. Për krahasim janë implementuar edhe dy modele tradicionale të mësimit makinerik, Logistic Regression dhe Decision Tree, të cilat përdoren si modele bazë.
 
-The prediction task consists of predicting the next user interaction as one of three event types:
-
-- `view`
-- `cart`
-- `purchase`
-
-The implementation is provided in a Jupyter Notebook using Python and machine learning and deep learning libraries.
-
-## Objective
-
-The main objective of this project is to investigate whether previous user interactions within a user session can be used to predict the user's next action.
-
-The project also investigates the effect of class imbalance on model performance by comparing the models before and after applying Random UnderSampling to the training data.
-
-## Dataset
-
-The project uses the **E-Commerce Behavior Data from Multi-Category Store** dataset.
-
-The experiment uses the `2019-Oct.csv` file. Since the original October dataset contains more than 42 million records, the notebook processes **6,000,000 records** using chunks of **500,000 records**.
-
-The dataset contains information about user interactions, including:
-
-- event timestamp
-- event type
-- product ID
-- category ID
-- category code
-- brand
-- price
-- user ID
-- user session
-
-The main event types used for prediction are:
+Detyra e parashikimit konsiston në parashikimin e ndërveprimit të ardhshëm të përdoruesit si një nga tri llojet e ngjarjeve:
 
 - `view`
 - `cart`
 - `purchase`
 
-The raw dataset is not included in the repository because of its large size.
+Implementimi është realizuar në një Jupyter Notebook duke përdorur Python, si dhe biblioteka për mësimin makinerik dhe mësimin e thellë.
 
-## Technologies and Libraries
+## Qëllimi
 
-The project is implemented using:
+Qëllimi kryesor i këtij projekti është të hulumtojë nëse ndërveprimet e mëparshme të përdoruesit brenda një sesioni mund të përdoren për të parashikuar veprimin e tij të ardhshëm.
+
+Projekti gjithashtu analizon ndikimin e pabalancimit të klasave në performancën e modeleve, duke krahasuar rezultatet para dhe pas aplikimit të metodës Random UnderSampling në të dhënat e trajnimit.
+
+## Të dhënat
+
+Projekti përdor dataset-in **E-Commerce Behavior Data from Multi-Category Store**.
+
+Eksperimenti përdor skedarin `2019-Oct.csv`. Meqenëse dataset-i origjinal i muajit tetor përmban më shumë se 42 milionë regjistrime, në notebook përpunohen **6,000,000 regjistrime**, duke përdorur pjesë prej **500,000 regjistrimesh**.
+
+Dataset-i përmban informacione mbi ndërveprimet e përdoruesve, duke përfshirë:
+
+- kohën e ngjarjes
+- llojin e ngjarjes
+- ID-në e produktit
+- ID-në e kategorisë
+- kodin e kategorisë
+- markën
+- çmimin
+- ID-në e përdoruesit
+- sesionin e përdoruesit
+
+Llojet kryesore të ngjarjeve të përdorura për parashikim janë:
+
+- `view`
+- `cart`
+- `purchase`
+
+Dataset-i origjinal nuk është përfshirë në repository për shkak të madhësisë së tij.
+
+## Teknologjitë dhe bibliotekat
+
+Projekti është implementuar duke përdorur:
 
 - Python
 - Jupyter Notebook
@@ -61,83 +61,80 @@ The project is implemented using:
 - Imbalanced-learn
 - TensorFlow / Keras
 
-## Machine Learning Models
+## Modelet e mësimit makinerik
 
-Three classification models are implemented and compared.
+Në projekt janë implementuar dhe krahasuar tri modele klasifikimi.
 
 ### Logistic Regression
 
-Logistic Regression is used as a traditional machine learning baseline for predicting the next user interaction.
+Logistic Regression është përdorur si një model tradicional bazë i mësimit makinerik për parashikimin e ndërveprimit të ardhshëm të përdoruesit.
 
 ### Decision Tree
 
-Decision Tree is used as a second baseline model for classifying the next user interaction.
+Decision Tree është përdorur si model i dytë bazë për klasifikimin e ndërveprimit të ardhshëm të përdoruesit.
 
 ### LSTM
 
-Long Short-Term Memory (LSTM) is the main deep learning model used in the project.
+Long Short-Term Memory (LSTM) është modeli kryesor i mësimit të thellë i përdorur në projekt.
 
-The model uses sequences of **five previous user interaction events** to predict the following event.
+Modeli përdor sekuenca të **pesë ndërveprimeve të mëparshme të përdoruesit** për të parashikuar ndërveprimin pasues.
 
-## Main Steps
+## Hapat kryesorë
 
-The main workflow of the project is:
+Rrjedha kryesore e projektit është:
 
-1. Load 6,000,000 records from the October 2019 dataset using chunks.
-2. Perform exploratory data analysis.
-3. Check duplicate records and missing values.
-4. Remove duplicate records and handle missing categorical values.
-5. Convert timestamps and organize events chronologically within user sessions.
-6. Encode the event types:
+1. Ngarkimi i 6,000,000 regjistrimeve nga dataset-i i tetorit 2019 duke përdorur pjesë të të dhënave.
+2. Kryerja e analizës eksploruese të të dhënave.
+3. Kontrollimi i regjistrimeve të dyfishta dhe vlerave që mungojnë.
+4. Heqja e regjistrimeve të dyfishta dhe trajtimi i vlerave që mungojnë në kolonat kategorike.
+5. Konvertimi i vlerave të kohës dhe organizimi i ngjarjeve në mënyrë kronologjike brenda sesioneve të përdoruesve.
+6. Kodimi i llojeve të ngjarjeve:
    - `view = 0`
    - `cart = 1`
    - `purchase = 2`
-7. Create sequences of five events to predict the next event.
-8. Sort the generated sequences chronologically.
-9. Split the data into training and testing sets using an 80/20 chronological split.
-10. Train Logistic Regression, Decision Tree, and LSTM models.
-11. Evaluate the models using accuracy, precision, recall, F1-score, Macro F1-score, and confusion matrices.
-12. Apply Random UnderSampling to balance the training data.
-13. Retrain the models using the balanced training data.
-14. Compare model performance before and after class balancing.
+7. Krijimi i sekuencave me pesë ngjarje për të parashikuar ngjarjen pasuese.
+8. Renditja kronologjike e sekuencave të krijuara.
+9. Ndarja e të dhënave në grupe trajnimi dhe testimi duke përdorur ndarje kronologjike 80/20.
+10. Trajnimi i modeleve Logistic Regression, Decision Tree dhe LSTM.
+11. Vlerësimi i modeleve duke përdorur Accuracy, Precision, Recall, F1-Score, Macro F1-Score dhe matricat e konfuzionit.
+12. Aplikimi i Random UnderSampling për balancimin e të dhënave të trajnimit.
+13. Ritrajnimi i modeleve duke përdorur të dhënat e balancuara.
+14. Krahasimi i performancës së modeleve para dhe pas balancimit të klasave.
 
-## Results
+## Rezultatet
 
-The dataset is highly imbalanced, with `view` representing the majority of user interactions.
+Dataset-i është shumë i pabalancuar, ku klasa `view` përfaqëson shumicën e ndërveprimeve të përdoruesve.
 
-Before balancing, the models achieve high overall accuracy, but the minority classes (`cart` and `purchase`) are more difficult to predict.
+Para balancimit, modelet arrijnë saktësi të lartë të përgjithshme, por klasat më pak të përfaqësuara (`cart` dhe `purchase`) janë më të vështira për t'u parashikuar.
 
-After applying Random UnderSampling to the training data, overall accuracy decreases, while the models achieve better recognition of the minority classes.
+Pas aplikimit të Random UnderSampling në të dhënat e trajnimit, saktësia e përgjithshme zvogëlohet, ndërsa modelet arrijnë rezultate më të mira në identifikimin e klasave më pak të përfaqësuara.
 
-### Model Comparison
+### Krahasimi i modeleve
 
-| Model | Accuracy Before Balancing | Accuracy After Balancing | Macro F1 Before | Macro F1 After |
+| Modeli | Accuracy para balancimit | Accuracy pas balancimit | Macro F1 para | Macro F1 pas |
 |---|---:|---:|---:|---:|
 | Logistic Regression | 0.9541 | 0.9043 | 0.3614 | 0.5122 |
 | Decision Tree | 0.9590 | 0.9176 | 0.4728 | 0.5540 |
 | LSTM | 0.9591 | 0.9102 | 0.4767 | 0.5399 |
 
-The results show that class balancing reduces overall accuracy, but improves
-the models' ability to recognize the less frequent `cart` and `purchase`
-interactions. Based on Macro F1, the Decision Tree achieves the highest
-performance after balancing, followed by LSTM and Logistic Regression.
+Rezultatet tregojnë se balancimi i klasave e zvogëlon saktësinë e përgjithshme, por përmirëson aftësinë e modeleve për të identifikuar ndërveprimet më pak të shpeshta `cart` dhe `purchase`.
 
-### Minority Class Recall
+Bazuar në Macro F1, Decision Tree paraqet performancën më të lartë pas balancimit, i ndjekur nga LSTM dhe Logistic Regression.
 
-For the LSTM model, minority-class recall improves after balancing:
+### Recall i klasave më pak të përfaqësuara
 
-| Event | Before Balancing | After Balancing |
+Për modelin LSTM, Recall-i i klasave më pak të përfaqësuara përmirësohet pas balancimit:
+
+| Ngjarja | Para balancimit | Pas balancimit |
 |---|---:|---:|
 | `cart` | 0.12 | 0.52 |
 | `purchase` | 0.16 | 0.52 |
 
-These results show that Random UnderSampling improves the recognition of
-the less frequent `cart` and `purchase` interactions, although this
-improvement is accompanied by a decrease in overall accuracy.
+Këto rezultate tregojnë se Random UnderSampling përmirëson identifikimin e ndërveprimeve më pak të shpeshta `cart` dhe `purchase`, megjithëse ky përmirësim shoqërohet me një ulje të saktësisë së përgjithshme.
 
-### Visual Results
+## Pamje vizuale të rezultateve
 
-The repository can also include selected figures generated during the experiments.
+Repository mund të përmbajë figura të përzgjedhura të gjeneruara gjatë eksperimenteve.
 
 ### Shpërndarja e ngjarjeve pas përpunimit të të dhënave
 
@@ -151,23 +148,24 @@ The repository can also include selected figures generated during the experiment
 
 ![Recall i klasave cart dhe purchase para dhe pas balancimit](./figures/Minority_Class__Recall_Before_After_Balancing.png)
 
-## How to Run
-The complete implementation is available in the Jupyter Notebook:
+## Si të ekzekutohet projekti
 
-**[Open the Jupyter Notebook](user_behavior_prediction_lstm.ipynb)**
+Implementimi i plotë është i disponueshëm në Jupyter Notebook:
 
-### Using Kaggle
+**[Hap Jupyter Notebook](./user_behavior_prediction_lstm.ipynb)**
 
-The notebook can be executed in a Kaggle environment.
+### Përdorimi në Kaggle
 
-1. Open the project notebook.
-2. Add the **E-Commerce Behavior Data from Multi-Category Store** dataset.
-3. Make sure the `2019-Oct.csv` file is available.
-4. Run the notebook cells from top to bottom.
+Notebook-u mund të ekzekutohet në një mjedis Kaggle.
 
-### Using Jupyter Notebook Locally
+1. Hapni notebook-un e projektit.
+2. Shtoni dataset-in **E-Commerce Behavior Data from Multi-Category Store**.
+3. Sigurohuni që skedari `2019-Oct.csv` të jetë i disponueshëm.
+4. Ekzekutoni qelizat e notebook-ut nga fillimi deri në fund.
 
-Clone the repository:
+### Përdorimi lokalisht me Jupyter Notebook
+
+Klononi repository-n:
 
 ```bash
 git clone <repository-url>
