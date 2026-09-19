@@ -1,5 +1,5 @@
 
-# Parashikimi i sjelljes së përdoruesve me LSTM
+# Parashikimi i sjelljes së përdoruesve duke përdorur RNN
 
 ## Përmbledhje e projektit
 
@@ -107,7 +107,7 @@ Dataset-i është shumë i pabalancuar, ku klasa `view` përfaqëson shumicën e
 
 Para balancimit, modelet arrijnë saktësi të lartë të përgjithshme, por klasat më pak të përfaqësuara (`cart` dhe `purchase`) janë më të vështira për t'u parashikuar.
 
-Pas aplikimit të Random UnderSampling në të dhënat e trajnimit, saktësia e përgjithshme zvogëlohet, ndërsa modelet arrijnë rezultate më të mira në identifikimin e klasave më pak të përfaqësuara.
+Pas aplikimit të Random UnderSampling në të dhënat e trajnimit, Accuracy e përgjithshme zvogëlohet, ndërsa performanca në identifikimin e klasave më pak të përfaqësuara përmirësohet, gjë që reflektohet në rritjen e Macro F1 dhe Recall për klasat cart dhe purchase.
 
 ### Krahasimi i modeleve
 
@@ -115,7 +115,7 @@ Pas aplikimit të Random UnderSampling në të dhënat e trajnimit, saktësia e 
 |---|---:|---:|---:|---:|
 | Logistic Regression | 0.9541 | 0.9043 | 0.3614 | 0.5122 |
 | Decision Tree | 0.9590 | 0.9176 | 0.4728 | 0.5540 |
-| LSTM | 0.9591 | 0.9102 | 0.4767 | 0.5399 |
+| LSTM | 0.9591 | 0.9102 | 0.4568 | 0.5397 |
 
 Rezultatet tregojnë se balancimi i klasave e zvogëlon saktësinë e përgjithshme, por përmirëson aftësinë e modeleve për të identifikuar ndërveprimet më pak të shpeshta `cart` dhe `purchase`.
 
@@ -127,7 +127,7 @@ Për modelin LSTM, Recall-i i klasave më pak të përfaqësuara përmirësohet 
 
 | Ngjarja | Para balancimit | Pas balancimit |
 |---|---:|---:|
-| `cart` | 0.12 | 0.52 |
+| `cart` | 0.08 | 0.53 |
 | `purchase` | 0.16 | 0.52 |
 
 Këto rezultate tregojnë se Random UnderSampling përmirëson identifikimin e ndërveprimeve më pak të shpeshta `cart` dhe `purchase`, megjithëse ky përmirësim shoqërohet me një ulje të saktësisë së përgjithshme.
