@@ -67,7 +67,7 @@ Në projekt janë implementuar dhe krahasuar tri modele klasifikimi.
 
 ### Logistic Regression
 
-Logistic Regression është përdorur si një model tradicional bazë i mësimit makinerik për parashikimin e ndërveprimit të ardhshëm të përdoruesit.
+Logistic Regression është përdorur si një model tradicional bazë i Machine Learning për parashikimin e ndërveprimit të ardhshëm të përdoruesit.
 
 ### Decision Tree
 
@@ -75,7 +75,7 @@ Decision Tree është përdorur si model i dytë bazë për klasifikimin e ndër
 
 ### LSTM
 
-Long Short-Term Memory (LSTM) është modeli kryesor i mësimit të thellë i përdorur në projekt.
+Long Short-Term Memory (LSTM) është modeli kryesor i Deep Learning i përdorur në projekt.
 
 Modeli përdor sekuenca të **pesë ndërveprimeve të mëparshme të përdoruesit** për të parashikuar ndërveprimin pasues.
 
@@ -115,7 +115,7 @@ Pas aplikimit të Random UnderSampling në të dhënat e trajnimit, Accuracy e p
 |---|---:|---:|---:|---:|
 | Logistic Regression | 0.9541 | 0.9043 | 0.3614 | 0.5122 |
 | Decision Tree | 0.9590 | 0.9176 | 0.4728 | 0.5540 |
-| LSTM | 0.9591 | 0.9102 | 0.4568 | 0.5397 |
+| LSTM | 0.9591 | 0.9093 | 0.4728 | 0.5304 |
 
 Rezultatet tregojnë se balancimi i klasave e zvogëlon saktësinë e përgjithshme, por përmirëson aftësinë e modeleve për të identifikuar ndërveprimet më pak të shpeshta `cart` dhe `purchase`.
 
@@ -128,7 +128,7 @@ Për modelin LSTM, Recall-i i klasave më pak të përfaqësuara përmirësohet 
 | Ngjarja | Para balancimit | Pas balancimit |
 |---|---:|---:|
 | `cart` | 0.08 | 0.53 |
-| `purchase` | 0.16 | 0.52 |
+| `purchase` | 0.15 | 0.52 |
 
 Këto rezultate tregojnë se Random UnderSampling përmirëson identifikimin e ndërveprimeve më pak të shpeshta `cart` dhe `purchase`, megjithëse ky përmirësim shoqërohet me një ulje të saktësisë së përgjithshme.
 
